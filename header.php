@@ -4,10 +4,11 @@
  * @subpackage effercio
  */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
+<!DOCTYPE html>
+<html>
 	<head profile="http://gmpg.org/xfn/11">
-		<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+		<meta charset="<?php bloginfo('charset'); ?>" />
+		
 		<title><?php wp_title('&laquo;', true, 'right'); ?> <?php bloginfo('name'); ?></title>
 
 		<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Posts" href="<?php bloginfo('rss2_url'); ?>" />
@@ -22,9 +23,13 @@
 		
 		<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css" />
 		
+		<!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+		
         <style type="text/css" media="screen">
 			@import url('<?php bloginfo('stylesheet_url'); ?>');
-		</style>	
+		</style>
 
 		<?php wp_get_archives('type=monthly&format=link'); ?>
 		<?php if (is_singular()) wp_enqueue_script('comment-reply'); ?>
