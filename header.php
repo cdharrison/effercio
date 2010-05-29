@@ -20,6 +20,8 @@
 		
 		<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
 		
+		<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css" />
+		
         <style type="text/css" media="screen">
 			@import url('<?php bloginfo('stylesheet_url'); ?>');
 		</style>	

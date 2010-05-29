@@ -26,7 +26,7 @@ Tags: blue, fixed width, two columns, widgets, tagging
 		background:#00adef url(img/bg.png) repeat-y 50% 0;
 		background-attachment:fixed;
 		color:#000;
-		font:normal 62.5%/1.4 Lucida Grande,Geneva,Arial,Helvetica,sans-serif;
+		font:normal 62.5%/1.4 'Droid Sans',Lucida Grande,Geneva,Arial,Helvetica,sans-serif;
 		margin:0;
 		}
 	a {
