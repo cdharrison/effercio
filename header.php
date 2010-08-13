@@ -51,8 +51,5 @@
 			</header>
 	
 			<nav>
-				<ul>
-					<li class="page_item<?php if(is_home()) { ?> current_page_item<? } ?><?php if(is_single()) { ?> current_page_item<? } ?>"><a href="<?php bloginfo('url'); ?>" title="Home">Home</a></li>
-					<?php wp_list_pages('title_li=&depth=1'); ?>
-				</ul>
+				<?php wp_nav_menu( array('menu' => 'Main Nav' )); ?>
 			</nav>
