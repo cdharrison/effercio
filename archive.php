@@ -1,7 +1,7 @@
 <?php
 /**
  * @package WordPress
- * @subpackage effercio
+ * @subpackage effercio2
  */
 
 	get_header();
