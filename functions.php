@@ -7,8 +7,8 @@
     function register_my_menus() {
         register_nav_menus(
             array(
-                'menu-1' => __( 'Menu 1' ),
-                'menu-2' => __( 'Menu 2' )
+                'menu-1' => __( 'Main Nav' ),
+                'menu-2' => __( 'Footer Nav' )
             )
         );
     }
