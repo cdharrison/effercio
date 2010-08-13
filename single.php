@@ -6,70 +6,81 @@
 ?>
 <?php get_header(); ?>
 
-	<div id="content" class="single">
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-		<div class="browse top clearfix">
-			<?php posts_nav_link(' &#151; ','Previous Entries','Next Entries'); ?> 
-		</div>
-	
-		<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
-			<h2 class="title"><?php the_title(); ?></h2>
-			<p class="metadata">
-				<span class="date"><?php the_time('m.d.Y') ?></span> at
-				<span class="time"><?php the_time() ?></span> by
-				<span class="user"><?php the_author() ?></span>
-			</p>
+            <section id="content" class="single-post">
+				<?php if (have_posts()) : ?>
+					<?php while (have_posts()) : the_post(); ?>
+				
+						<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
+							
+							<?php if ( has_post_thumbnail() ) : ?>
+								<?php the_post_thumbnail( 'medium' ) ?>
+							<?php endif; ?>
+							
+							<section id="social">
+							    <a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php echo get_permalink(); ?>" data-count="horizontal" data-text="Check out <?php the_title(); ?> on <?php bloginfo( 'name' ); ?>" data-via="cdharrison">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+							    <iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo rawurlencode(get_permalink()); ?>&amp;layout=standard&amp;show-faces=true&amp;width=450&amp;action=like&amp;font=arial&amp;colorscheme=dark" scrolling="no" frameborder="0" allowTransparency="true" id="facebook-like"></iframe>
+							</section>
+							
+							<time datetime="<?php the_time( 'Y-m-d' ) ?>T<?php the_time() ?>-04:00">
+								<span class="month"><?php the_time( 'm' ) ?></span>
+								<span class="day"><?php the_time( 'd' ) ?></span>
+								<span class="year"><?php the_time( 'y' ) ?></span>
+							</time>
+							
+							<header class="title">
+								<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to '<?php the_title(); ?>'"><?php the_title(); ?></a></h2>
+							</header>
+										
+							<section class="entry">
+								<?php the_content( 'Continue Reading...' ); ?>
+							</section>
+							
+							<section class="tags">
+            	                <?php the_tags( '<strong>Tags:</strong> ', ', ', ''); ?>
+                            </section>
+							
+							<section class="post-meta">
+							    
+								<span class="permalink">
+									<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to '<?php the_title(); ?>'">#</a>
+								</span>
+								<span class="comments">
+									<?php comments_popup_link(__('Leave a Comment'), __('1 Comment'), __('% Comments'), 'commentslink', __('Comments Off')); ?>
+								</span>
+								<?php edit_post_link(__('Edit'), '<span class="edit-post-link"> ', '</span>'); ?>
+							</section>
+							
+							<section id="comments">
+			                    <?php comments_template(); ?>
+	                    	</section>
+								
+						</article>
+						
+							
+					<? endwhile; ?>
+							
+					<section class="browse clearfix">
+					
+						<?php posts_nav_link(' ','&#8592; Previous Entries','Next Entries &#8594;'); ?>
+					
+					</section> <!-- /.browse -->
+					
+				<?php else : ?>
+				
+					<section class="error">		
+					
+						<h2>Not Found</h2>
+						<p>Sorry, but you are looking for something that isn't here.</p>
+						<?php include( TEMPLATEPATH . "/searchform.php" ); ?>			
+					
+					</section> <!-- /.error -->
+						
+				<?php endif; ?>
 		
-			<div class="entry">
-				<?php the_content("<p class=\"continue\">" . __('Read the Rest of','') . " '" . the_title('', '', false) . "'</p>"); ?>
-			</div>
-			
-            <div class="tags">
-            	<?php the_tags( '<strong>Tags:</strong> ', ', ', ''); ?>
-            </div>
-            
-			<?php wp_link_pages(); ?>
-			
-			<div class="tools">
-				<?php edit_post_link(__('Edit'), '<span class="edit_post_link"> ', '</span>'); ?>
-				<span class="permalink"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to '<?php the_title(); ?>'">Permalink</a></span>
-			</div>
-		</div>
+			</section> <!-- /#content -->
 
-		<div id="comments">
-			<?php comments_template(); ?>
-		</div>
 
-		<!--
-		<?php trackback_rdf(); ?>
-		-->
-	
-	<?php endwhile; ?>
-	
-		<div class="browse bottom clearfix">
-			<?php posts_nav_link(' &#151; ','Previous Entries','Next Entries'); ?> 
-		</div>
-	
-	<? else : ?>
-	
-	
-		<div class="post">
-			<h2 class="title">Oops.</h2>
-			<div class="entry">
-				<h2 class="title">We seem to be experimenting some techmological differences.</h2>
-				<p>But seriously... you've either stumbled upon a page that's been removed from the site,
-				visited an outdated link, or maybe something more sinister is afoot. Regardless,
-				what you're looking for isn't here. Fear not, though:</p>
-			</div>
-			
-			<div class="search">
-				<?php include (TEMPLATEPATH . '/searchform.php'); ?>
-			</div>
-		</div>
-
-	<?php endif; ?>
-	</div>
 	
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

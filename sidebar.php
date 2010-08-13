@@ -1,10 +1,10 @@
 <?php
 /**
  * @package WordPress
- * @subpackage effercio
+ * @subpackage effercio2
  */
 ?>
-			<div id="sidebar">
+			<aside id="sidebar">
 				<ul>
 				<?php if ( function_exists('dynamic_sidebar') && dynamic_sidebar(1) ) : else : ?>
 						
@@ -89,4 +89,4 @@
                 </li>
 
 				</ul>
-			</div>
+			</aside>
